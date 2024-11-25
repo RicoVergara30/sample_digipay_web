@@ -8,254 +8,22 @@ class TransactionScreen extends StatefulWidget {
 }
 
 class _TransactionScreenState extends State<TransactionScreen> {
-  final int itemsPerPage = 15; // Number of items per page
-  int currentPage = 0; // Current page index
-
-  List<Map<String, dynamic>> transactions = [
-    {
-      'Name': 'Lorenzo',
-      'dateCreated': '29 Jan 2021, 07:09 PM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '-4,950',
-      'balance': '6,986,893',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Diane',
-      'dateCreated': '29 Jan 2021, 07:09 PM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '+1,800,000',
-      'balance': '6,991,843',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Vincente',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '-16',
-      'balance': '5,191,843',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '10000101146',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '10000101143',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '10000101146',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '10000101143',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '10000101146',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '10000101140566',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '10000101143',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '10000101146',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '100001011423',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '1000010114566',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '10000101146',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '10000101143',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '10000101143',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '100001011466',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
-    {
-      'Name': 'Raymond',
-      'dateCreated': '28 Jan 2021, 11:48 AM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '+1,001',
-      'balance': '5,191,859',
-      'status': 'Success',
-    },
-    {
-      'Name': 'Rico',
-      'dateCreated': '27 Jan 2021, 01:56 PM',
-      'transactionID': '947228',
-      'reference': '1000010114',
-      'amount': '-4,950',
-      'balance': '5,190,858',
-      'status': 'Failed',
-    },
+  //-----ist of transaction-----//
+  final List<String> transactionTypes = [
+    "ECPAY",
+    "ATM",
+    "DIGI-PAY",
+    "SMART",
+    "BAYAD CENTER",
+    "GLOBE",
   ];
-
-  // Get paginated transactions for the current page
-  List<Map<String, dynamic>> get paginatedTransactions {
-    final startIndex = currentPage * itemsPerPage;
-    final endIndex = startIndex + itemsPerPage;
-
-    return transactions.sublist(
-      startIndex,
-      endIndex > transactions.length ? transactions.length : endIndex,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Transaction History',
+          "Transaction History",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -264,180 +32,373 @@ class _TransactionScreenState extends State<TransactionScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          // Header Row
-          Padding(
-            padding: const EdgeInsets.only(left: 120.0, right: 60.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              color: Colors.grey[200],
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'Name',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'Date Created',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'Transaction ID',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'Reference',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      'Amount',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      'Balance',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      'Status',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
+      //-----Box Adjustment-----//
+      body: Padding(
+        padding: const EdgeInsets.only(left: 70.0, right: 10.0),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, // Number of columns
+            crossAxisSpacing: 15.0, // Space between columns
+            mainAxisSpacing: 15.0, // Space between rows
+            childAspectRatio: 3.5, // Adjust height/width of each grid item
+          ),
+          itemCount: transactionTypes.length,
+          itemBuilder: (context, index) {
+            return _buildCard(transactionTypes[index]);
+          },
+        ),
+      ),
+    );
+  }
+
+  //-----clickable card for each transaction type-----//
+  Widget _buildCard(String title) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to the respective screen with a table of details
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                TransactionDetailScreen(transactionType: title),
+          ),
+        );
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        elevation: 4.0,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Center(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          // Paginated Transaction List // read the ListView
-          Expanded(
-            child: ListView.builder(
-              itemCount: paginatedTransactions.length,
-              itemBuilder: (context, index) {
-                final transaction = paginatedTransactions[index];
-                return Padding(
-                  padding: const EdgeInsets.only(left: 120.0, right: 60.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10,
-                          horizontal: 16,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Text(
-                                transaction['Name'],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Text(
-                                transaction['dateCreated'],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Text(
-                                transaction['transactionID'],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Text(
-                                transaction['reference'],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Text(
-                                transaction['amount'],
-                                style: TextStyle(
-                                  color: transaction['amount'].startsWith('-')
-                                      ? Colors.red
-                                      : Colors.green,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Text(
-                                transaction['balance'],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    transaction['status'] == 'Success'
-                                        ? Icons.check_circle
-                                        : Icons.error,
-                                    color: transaction['status'] == 'Success'
-                                        ? Colors.green
-                                        : Colors.red,
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Text(
-                                    transaction['status'],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Divider(height: 1),
-                    ],
-                  ),
-                );
-              },
+        ),
+      ),
+    );
+  }
+}
+
+class TransactionDetailScreen extends StatelessWidget {
+  final String transactionType;
+
+  const TransactionDetailScreen({
+    Key? key,
+    required this.transactionType,
+  }) : super(key: key);
+
+  //-----Sample data for each transaction type to be displayed in the table-----//
+  List<Map<String, String>> _getTransactionDetails() {
+    switch (transactionType) {
+      case "ECPAY":
+        return [
+          {
+            'Name': 'Lorenzo',
+            'dateCreated': '29 Jan 2021, 07:09 PM',
+            'transactionID': '947228',
+            'reference': '1000010114',
+            'amount': '-4,950',
+            'balance': '6,986,893',
+            'status': 'Success',
+          },
+          {
+            'Name': 'Rico',
+            'dateCreated': '27 Jan 2021, 01:56 PM',
+            'transactionID': '947228',
+            'reference': '1000010114',
+            'amount': '-4,950',
+            'balance': '5,190,858',
+            'status': 'Failed',
+          },
+          {
+            'Name': 'Raymond',
+            'dateCreated': '28 Jan 2021, 11:48 AM',
+            'transactionID': '947228',
+            'reference': '10000101143',
+            'amount': '+1,001',
+            'balance': '5,191,859',
+            'status': 'Success',
+          },
+          {
+            "Name": "John Doe",
+            "dateCreated": "2024-11-01",
+            "transactionID": "TXN123",
+            "amount": "\$100.00",
+            "reference": "Ref1234",
+            "balance": "\$500.00",
+            "status": "Completed"
+          },
+          {
+            "Name": "Jane Smith",
+            "dateCreated": "2024-11-02",
+            "transactionID": "TXN124",
+            "amount": "\$150.00",
+            "reference": "Ref1235",
+            "balance": "\$350.00",
+            "status": "Pending"
+          },
+          {
+            "Name": "Michael Johnson",
+            "dateCreated": "2024-11-03",
+            "transactionID": "TXN125",
+            "amount": "\$200.00",
+            "reference": "Ref1236",
+            "balance": "\$150.00",
+            "status": "Failed"
+          },
+        ];
+      case "ATM":
+        return [
+          {
+            'Name': 'Lorenzo',
+            'dateCreated': '29 Jan 2021, 07:09 PM',
+            'transactionID': '947228',
+            'reference': '1000010114',
+            'amount': '-4,950',
+            'balance': '6,986,893',
+            'status': 'Success',
+          },
+          {
+            'Name': 'Rico',
+            'dateCreated': '27 Jan 2021, 01:56 PM',
+            'transactionID': '947228',
+            'reference': '1000010114',
+            'amount': '-4,950',
+            'balance': '5,190,858',
+            'status': 'Failed',
+          },
+          {
+            'Name': 'Raymond',
+            'dateCreated': '28 Jan 2021, 11:48 AM',
+            'transactionID': '947228',
+            'reference': '10000101143',
+            'amount': '+1,001',
+            'balance': '5,191,859',
+            'status': 'Success',
+          },
+          {
+            "Name": "John Doe",
+            "dateCreated": "2024-11-01",
+            "transactionID": "TXN123",
+            "amount": "\$100.00",
+            "reference": "Ref1234",
+            "balance": "\$500.00",
+            "status": "Completed"
+          },
+          {
+            "Name": "Jane Smith",
+            "dateCreated": "2024-11-02",
+            "transactionID": "TXN124",
+            "amount": "\$150.00",
+            "reference": "Ref1235",
+            "balance": "\$350.00",
+            "status": "Pending"
+          },
+          {
+            "Name": "Michael Johnson",
+            "dateCreated": "2024-11-03",
+            "transactionID": "TXN125",
+            "amount": "\$200.00",
+            "reference": "Ref1236",
+            "balance": "\$150.00",
+            "status": "Failed"
+          },
+        ];
+
+      default:
+        return [
+          {
+            'Name': 'Lorenzo',
+            'dateCreated': '29 Jan 2021, 07:09 PM',
+            'transactionID': '947228',
+            'reference': '1000010114',
+            'amount': '-4,950',
+            'balance': '6,986,893',
+            'status': 'Success',
+          },
+          {
+            "Name": "John Doe",
+            "dateCreated": "2024-11-01",
+            "transactionID": "TXN123",
+            "amount": "\$100.00",
+            "reference": "Ref1234",
+            "balance": "\$500.00",
+            "status": "Completed"
+          },
+          {
+            "Name": "Jane Smith",
+            "dateCreated": "2024-11-02",
+            "transactionID": "TXN124",
+            "amount": "\$150.00",
+            "reference": "Ref1235",
+            "balance": "\$350.00",
+            "status": "Pending"
+          },
+          {
+            "Name": "Michael Johnson",
+            "dateCreated": "2024-11-03",
+            "transactionID": "TXN125",
+            "amount": "\$200.00",
+            "reference": "Ref1236",
+            "balance": "\$150.00",
+            "status": "Failed"
+          },
+          {
+            "Name": "John Doe",
+            "dateCreated": "2024-11-01",
+            "transactionID": "TXN123",
+            "amount": "\$100.00",
+            "reference": "Ref1234",
+            "balance": "\$500.00",
+            "status": "Completed"
+          },
+          {
+            "Name": "Jane Smith",
+            "dateCreated": "2024-11-02",
+            "transactionID": "TXN124",
+            "amount": "\$150.00",
+            "reference": "Ref1235",
+            "balance": "\$350.00",
+            "status": "Pending"
+          },
+          {
+            "Name": "Michael Johnson",
+            "dateCreated": "2024-11-03",
+            "transactionID": "TXN125",
+            "amount": "\$200.00",
+            "reference": "Ref1236",
+            "balance": "\$150.00",
+            "status": "Failed"
+          },
+        ];
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          transactionType,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              'Details for $transactionType',
             ),
           ),
-          // Pagination condition
+          const SizedBox(height: 20),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: currentPage > 0
-                      ? () => setState(() => currentPage--)
-                      : null,
-                  child: const Text('Previous'),
+            padding: const EdgeInsets.only(left: 100.0, right: 50.0),
+            child: DataTable(
+              //----- display the data-----//
+              columns: const [
+                DataColumn(
+                  label: Text(
+                    'Name',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
-                Text(
-                    'Page ${currentPage + 1} of ${(transactions.length / itemsPerPage).ceil()}'),
-                ElevatedButton(
-                  onPressed:
-                      (currentPage + 1) * itemsPerPage < transactions.length
-                          ? () => setState(() => currentPage++)
-                          : null,
-                  child: const Text('Next'),
+                DataColumn(
+                  label: Text(
+                    'dateCreated',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'transactionID',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'amount',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'reference',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'balance',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    'status',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
+              rows: _getTransactionDetails()
+                  .map(
+                    (transaction) => DataRow(
+                      cells: [
+                        DataCell(Text(transaction["Name"]!)),
+                        DataCell(Text(transaction["dateCreated"]!)),
+                        DataCell(Text(transaction["transactionID"]!)),
+                        DataCell(Text(transaction["amount"]!)),
+                        DataCell(Text(transaction["reference"]!)),
+                        DataCell(
+                          Text(transaction["balance"]!),
+                        ),
+                        DataCell(
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 8),
+                            decoration: BoxDecoration(
+                              color: transaction["status"] == "Completed"
+                                  ? Colors.green.withOpacity(0.2)
+                                  : transaction["status"] == "Pending"
+                                      ? Colors.orange.withOpacity(0.2)
+                                      : Colors.red.withOpacity(
+                                          0.2), // Background based on status
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              transaction["status"]!,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: transaction["status"] == "Completed"
+                                    ? Colors.green
+                                    : transaction["status"] == "Pending"
+                                        ? Colors.orange
+                                        : Colors
+                                            .red, // Text color based on status
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                  .toList(),
+              columnSpacing: 95.0,
+              headingRowHeight: 50.0,
+              border: TableBorder.all(),
             ),
-          )
+          ),
         ],
       ),
     );

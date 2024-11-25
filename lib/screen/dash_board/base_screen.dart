@@ -45,18 +45,6 @@ class _BaseScreenState extends State<BaseScreen> {
               ///CONTENT / PAGE
               SizedBox(
                 child: Scaffold(
-                  // appBar: AppBar(
-                  //   automaticallyImplyLeading: false,
-                  //   title: Center(
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.only(top: 10.0),
-                  //       child: Image.asset(
-                  //         "assets/FDSAPN.png",
-                  //         height: 200,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   body: getCurrentPage(),
                 ),
               ),
@@ -143,17 +131,11 @@ class _BaseScreenState extends State<BaseScreen> {
                                         menuTitle: onHovered ? "Dashboard" : "",
                                         icon: Icons.dashboard,
                                         dropdown: false,
-                                        suffixIcon: isDropdownOpen
-                                            ? Icons.keyboard_arrow_down_outlined
-                                            : Icons
-                                                .keyboard_arrow_right_outlined,
                                       ),
                                       onTap: () {
                                         setState(
                                           () {
                                             selectPage = '/Dashboard';
-                                            isDropdownOpen =
-                                                !isDropdownOpen; // Toggle dropdown
                                           },
                                         );
                                       },
@@ -164,11 +146,17 @@ class _BaseScreenState extends State<BaseScreen> {
                                             onHovered ? "Transaction" : "",
                                         icon: Icons.money,
                                         dropdown: false,
+                                        // suffixIcon: isDropdownOpen
+                                        //     ? Icons.keyboard_arrow_down_outlined
+                                        //     : Icons
+                                        //         .keyboard_arrow_right_outlined,
                                       ),
                                       onTap: () {
                                         setState(
                                           () {
                                             selectPage = '/Transaction';
+                                            isDropdownOpen =
+                                                !isDropdownOpen; // Toggle dropdown
                                           },
                                         );
                                       },
