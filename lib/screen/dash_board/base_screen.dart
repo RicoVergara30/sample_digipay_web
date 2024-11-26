@@ -133,11 +133,9 @@ class _BaseScreenState extends State<BaseScreen> {
                                         dropdown: false,
                                       ),
                                       onTap: () {
-                                        setState(
-                                          () {
-                                            selectPage = '/Dashboard';
-                                          },
-                                        );
+                                        setState(() {
+                                          selectPage = '/Dashboard';
+                                        });
                                       },
                                     ),
                                     ListTile(
@@ -146,6 +144,7 @@ class _BaseScreenState extends State<BaseScreen> {
                                             onHovered ? "Transaction" : "",
                                         icon: Icons.money,
                                         dropdown: false,
+
                                         // suffixIcon: isDropdownOpen
                                         //     ? Icons.keyboard_arrow_down_outlined
                                         //     : Icons

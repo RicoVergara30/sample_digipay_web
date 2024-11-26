@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MenuDrawerTextDesign extends StatelessWidget {
+class MenuDrawerTextDesign extends StatefulWidget {
   final String menuTitle;
   final IconData? icon;
   final bool dropdown;
@@ -13,39 +13,58 @@ class MenuDrawerTextDesign extends StatelessWidget {
     this.icon,
     this.subItems,
     required this.dropdown,
-    this.suffixIcon, // Added optional suffixIcon parameter
+    this.suffixIcon,
   });
 
   @override
+  _MenuDrawerTextDesignState createState() => _MenuDrawerTextDesignState();
+}
+
+class _MenuDrawerTextDesignState extends State<MenuDrawerTextDesign> {
+  bool isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween, // Adjusts layout
-      children: [
-        Row(
+    return MouseRegion(
+      onEnter: (_) {
+        setState(() {
+          isHovered = true; // Highlight on mouse enter
+        });
+      },
+      onExit: (_) {
+        setState(() {
+          isHovered = false;
+        });
+      },
+      child: Container(
+        color: isHovered ? Colors.grey[200] : Colors.transparent,
+        padding: const EdgeInsets.symmetric(vertical: 7.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(icon, color: Colors.red), // Main icon
-            const SizedBox(width: 10.0),
-            Text(
-              menuTitle,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
+            Row(
+              children: [
+                if (widget.icon != null) Icon(widget.icon, color: Colors.red),
+                const SizedBox(width: 10.0),
+                Text(
+                  widget.menuTitle,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
             ),
+            if (widget.dropdown)
+              Icon(
+                widget.suffixIcon ?? Icons.keyboard_arrow_down_outlined,
+                color: widget.suffixIcon == Icons.keyboard_arrow_right_outlined
+                    ? Colors.teal
+                    : Colors.red,
+              ),
           ],
         ),
-        dropdown
-            ? Icon(
-                suffixIcon ??
-                    Icons
-                        .keyboard_arrow_down_outlined, // Default to down arrow icon
-                color: suffixIcon == Icons.keyboard_arrow_right_outlined
-                    ? Colors.grey
-                    : Colors
-                        .red, // Set grey for right arrow icon, red for others
-              )
-            : Container(),
-      ],
+      ),
     );
   }
 }
