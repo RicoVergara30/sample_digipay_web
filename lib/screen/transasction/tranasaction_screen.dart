@@ -10,7 +10,6 @@ class TransactionScreen extends StatefulWidget {
 }
 
 class _TransactionScreenState extends State<TransactionScreen> {
-  String selectPage = "/Dashboard";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,11 +39,6 @@ class _TransactionScreenState extends State<TransactionScreen> {
           children: [
             // SMART
             NeumorphicContainer(
-              destination: () {
-                setState(() {
-                  selectPage = '/Dashboard';
-                });
-              },
               padding: EdgeInsets.zero,
               shape: CircleBorder(),
               child: Column(
@@ -81,201 +75,201 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 ],
               ),
             ),
-
+            //
             // ATM
-            // NeumorphicContainer(
-            //   padding: EdgeInsets.zero,
-            //   shape: CircleBorder(),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Image.asset(
-            //         'assets/Atmprovider.png',
-            //         width: 100,
-            //         height: 100,
-            //         fit: BoxFit.cover,
-            //       ),
-            //       const SizedBox(height: 10),
-            //       const Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //         children: [
-            //           Text(
-            //             'Incoming :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //           Text(
-            //             'Deducted :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            //
-            // // GLOBE
-            // NeumorphicContainer(
-            //   padding: EdgeInsets.zero,
-            //   shape: CircleBorder(),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Image.asset(
-            //         'assets/globeLogo.png',
-            //         width: 100,
-            //         height: 50,
-            //         fit: BoxFit.cover,
-            //       ),
-            //       const SizedBox(height: 10),
-            //       const Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //         children: [
-            //           Text(
-            //             'Incoming :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //           Text(
-            //             'Deducted :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            //
-            // // DIGI-PAY
-            // NeumorphicContainer(
-            //   padding: EdgeInsets.zero,
-            //   shape: CircleBorder(),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Image.asset(
-            //         'assets/dgipay.png',
-            //         width: 100,
-            //         height: 50,
-            //         fit: BoxFit.cover,
-            //       ),
-            //       const SizedBox(height: 10),
-            //       const Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //         children: [
-            //           Text(
-            //             'Incoming :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //           Text(
-            //             'Deducted :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            //
-            // // BAYAD CENTER
-            // NeumorphicContainer(
-            //   padding: EdgeInsets.zero,
-            //   shape: CircleBorder(),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Image.asset(
-            //         'assets/bayadCenter.png',
-            //         width: 100,
-            //         height: 100,
-            //         fit: BoxFit.cover,
-            //       ),
-            //       const SizedBox(height: 10),
-            //       const Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //         children: [
-            //           Text(
-            //             'Incoming :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //           Text(
-            //             'Deducted :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            //
-            // // ECPAY
-            // NeumorphicContainer(
-            //   padding: EdgeInsets.zero,
-            //   shape: CircleBorder(),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Image.asset(
-            //         'assets/ecpayprovider.png',
-            //         width: 100,
-            //         height: 50,
-            //         fit: BoxFit.cover,
-            //       ),
-            //       const SizedBox(height: 10),
-            //       const Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //         children: [
-            //           Text(
-            //             'Incoming :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //           Text(
-            //             'Deducted :',
-            //             style: TextStyle(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.bold,
-            //               fontSize: 10.0,
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/Atmprovider.png',
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // GLOBE
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/globeLogo.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // DIGI-PAY
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/dgipay.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // BAYAD CENTER
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/bayadCenter.png',
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // ECPAY
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/ecpayprovider.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

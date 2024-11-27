@@ -1,10 +1,7 @@
-import 'dart:html' as html;
-
 import 'package:flutter/material.dart';
 import 'package:project_digipayweb/components/basedURL/routes.dart';
 
 import '../../widgets/MenuDrawerTextDesign.dart';
-import 'dashboard.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
@@ -15,19 +12,18 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   bool onHovered = false;
-  String selectPage = "/Dashboard";
   bool isDropdownOpen = false;
 
-  Widget getCurrentPage() {
-    if (selectPage.isNotEmpty) {
-      String route = selectPage;
-      html.window.history.pushState(null, '', route);
-      return routes[route]?.call(context) ?? const DashboardPage();
-    }
-
-    // LOADING INDICATOR
-    return const CircularProgressIndicator();
-  }
+  // Widget getCurrentPage() {
+  //   if (selectPage.isNotEmpty) {
+  //     String route = selectPage;
+  //     html.window.history.pushState(null, '', route);
+  //     return routes[route]?.call(context) ?? const DashboardPage();
+  //   }
+  //
+  //   // LOADING INDICATOR
+  //   return const CircularProgressIndicator();
+  // }
 
   @override
   Widget build(BuildContext context) {

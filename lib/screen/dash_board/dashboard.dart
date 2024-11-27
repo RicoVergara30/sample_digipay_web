@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_digipayweb/widgets/neumorphic.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -12,97 +13,262 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: const Text(
           'Dashboard',
           style: TextStyle(
-            // Set the font size
             fontWeight: FontWeight.bold,
             color: Colors.black,
             letterSpacing: 1.2,
             fontFamily: 'Roboto',
           ),
         ),
+        elevation: 1,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(
-          left: 120.0,
-          right: 60.0,
-        ),
+        padding: const EdgeInsets.all(10.0),
         child: GridView.count(
-          shrinkWrap: true,
-          childAspectRatio: 2.10,
-          crossAxisCount: 4,
+          crossAxisCount: 6,
+          mainAxisSpacing: 15.0,
+          crossAxisSpacing: 15.0,
+          childAspectRatio: 30 / 15, // Adjust height-to-width ratio
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child:
-                  _userWidget('User', '10,000', Icons.supervised_user_circle),
+            // SMART
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/smartLogo.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: _active('In active', '5,000', Icons.notifications_active),
+            //
+            // ATM
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/Atmprovider.png',
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: _inactive(
-                  'Active', '5,000', Icons.notifications_active_outlined),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: _inactive(
-                  'Active', '5,000', Icons.notifications_active_outlined),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _userWidget(String title, String value, IconData icon) {
-    return Card(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon),
-          const SizedBox(height: 8.0),
-          Text(title),
-          const SizedBox(height: 8.0),
-          Text(value),
-        ],
-      ),
-    );
-  }
+            // GLOBE
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/globeLogo.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
-  Widget _active(String title, String value, IconData icon) {
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.only(right: 10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon),
-            const SizedBox(height: 8.0),
-            Text(title),
-            const SizedBox(height: 8.0),
-            Text(value),
-          ],
-        ),
-      ),
-    );
-  }
+            // DIGI-PAY
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/dgipay.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
-  Widget _inactive(String title, String value, IconData icon) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon),
-            const SizedBox(height: 8.0),
-            Text(title),
-            const SizedBox(height: 8.0),
-            Text(value),
+            // BAYAD CENTER
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/bayadCenter.png',
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // ECPAY
+            NeumorphicContainer(
+              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/ecpayprovider.png',
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Incoming :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Deducted :',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
