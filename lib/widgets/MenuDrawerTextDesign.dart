@@ -28,7 +28,7 @@ class _MenuDrawerTextDesignState extends State<MenuDrawerTextDesign> {
     return MouseRegion(
       onEnter: (_) {
         setState(() {
-          isHovered = true; // Highlight on mouse enter
+          isHovered = true;
         });
       },
       onExit: (_) {
@@ -39,30 +39,34 @@ class _MenuDrawerTextDesignState extends State<MenuDrawerTextDesign> {
       child: Container(
         color: isHovered ? Colors.grey[200] : Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 7.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                if (widget.icon != null) Icon(widget.icon, color: Colors.red),
-                const SizedBox(width: 10.0),
-                Text(
-                  widget.menuTitle,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  if (widget.icon != null) Icon(widget.icon, color: Colors.red),
+                  const SizedBox(width: 10.0),
+                  Text(
+                    widget.menuTitle,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            if (widget.dropdown)
-              Icon(
-                widget.suffixIcon ?? Icons.keyboard_arrow_down_outlined,
-                color: widget.suffixIcon == Icons.keyboard_arrow_right_outlined
-                    ? Colors.teal
-                    : Colors.red,
+                ],
               ),
-          ],
+              if (widget.dropdown)
+                Icon(
+                  widget.suffixIcon ?? Icons.keyboard_arrow_down_outlined,
+                  color:
+                      widget.suffixIcon == Icons.keyboard_arrow_right_outlined
+                          ? Colors.teal
+                          : Colors.red,
+                ),
+            ],
+          ),
         ),
       ),
     );
