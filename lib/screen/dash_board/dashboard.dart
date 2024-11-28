@@ -34,7 +34,7 @@ class _DashboardPageState extends State<DashboardPage> {
           crossAxisCount: 6,
           mainAxisSpacing: 15.0,
           crossAxisSpacing: 15.0,
-          childAspectRatio: 30 / 15, // Adjust height-to-width ratio
+          childAspectRatio: 20 / 15, // Adjust height-to-width ratio
           children: [
             // SMART
             NeumorphicContainer(
@@ -51,25 +51,8 @@ class _DashboardPageState extends State<DashboardPage> {
                   ),
                   const SizedBox(height: 10),
                   const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Incoming :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                      Text(
-                        'Deducted :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [],
                   ),
                 ],
               ),
@@ -91,24 +74,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(height: 10),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Incoming :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                      Text(
-                        'Deducted :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ],
               ),
@@ -130,24 +96,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(height: 10),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Incoming :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                      Text(
-                        'Deducted :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ],
               ),
@@ -169,24 +118,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(height: 10),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Incoming :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                      Text(
-                        'Deducted :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ],
               ),
@@ -200,32 +132,15 @@ class _DashboardPageState extends State<DashboardPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/bayadCenter.png',
-                    width: 50,
+                    'assets/bayadcenter.png',
+                    width: 100,
                     height: 50,
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Incoming :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                      Text(
-                        'Deducted :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ],
               ),
@@ -247,24 +162,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(height: 10),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Incoming :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                      Text(
-                        'Deducted :',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.0,
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ],
               ),

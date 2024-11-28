@@ -14,17 +14,6 @@ class _BaseScreenState extends State<BaseScreen> {
   bool onHovered = false;
   bool isDropdownOpen = false;
 
-  // Widget getCurrentPage() {
-  //   if (selectPage.isNotEmpty) {
-  //     String route = selectPage;
-  //     html.window.history.pushState(null, '', route);
-  //     return routes[route]?.call(context) ?? const DashboardPage();
-  //   }
-  //
-  //   // LOADING INDICATOR
-  //   return const CircularProgressIndicator();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -115,7 +104,7 @@ class _BaseScreenState extends State<BaseScreen> {
                                 ListTile(
                                   title: MenuDrawerTextDesign(
                                     menuTitle: onHovered ? "Dashboard" : "",
-                                    icon: Icons.dashboard,
+                                    icon: Icons.dashboard_outlined,
                                     dropdown: false,
                                     suffixIcon: isDropdownOpen
                                         ? Icons.keyboard_arrow_down_outlined
@@ -143,7 +132,7 @@ class _BaseScreenState extends State<BaseScreen> {
                                 ListTile(
                                   title: MenuDrawerTextDesign(
                                     menuTitle: onHovered ? "Setting" : "",
-                                    icon: Icons.settings,
+                                    icon: Icons.settings_suggest_rounded,
                                     dropdown: false,
                                   ),
                                   onTap: () {
