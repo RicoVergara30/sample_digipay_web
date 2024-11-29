@@ -27,17 +27,20 @@ class _AddServicePageState extends State<AddServicePage> {
           color: Colors.black,
         ),
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Card(
-            color: Colors.blue,
-            child: Container(
-              width: 100,
-              height: 100,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Card(
+              color: Colors.blue,
+              child: Container(
+                width: 1100,
+                height: 100,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

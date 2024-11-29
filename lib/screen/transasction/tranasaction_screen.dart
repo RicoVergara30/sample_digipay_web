@@ -369,118 +369,149 @@ class _TransactionScreenState extends State<TransactionScreen> {
   }
 
   Widget _buildNewContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: SizedBox(
-                  width: 500.0,
-                  child: TextField(
-                    controller: searchController,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search_rounded, size: 18),
-                      hintText: 'Search...',
-                      isDense: true,
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton.icon(
-                onPressed: () {
-                  // Add your download logic here
-                  print('Download button pressed');
-                },
-                icon: const Icon(
-                  Icons.cloud_download_outlined,
-                  color: Colors.red,
-                  size: 15,
-                ),
-                label: const Text(
-                  'Export',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 15, right: 15),
-            child: DataTable(
-              columns: const [
-                DataColumn(label: Text('Name')),
-                DataColumn(label: Text('Date Created')),
-                DataColumn(label: Text('Transaction ID')),
-                DataColumn(label: Text('Amount')),
-                DataColumn(label: Text('Reference')),
-                DataColumn(label: Text('Balance')),
-                DataColumn(label: Text('Status')),
-              ],
-              rows: getPaginatedTransactions().map((transaction) {
-                return DataRow(
-                  cells: [
-                    DataCell(Text(transaction['Name'] ?? '-')),
-                    DataCell(Text(transaction['dateCreated'] ?? '-')),
-                    DataCell(Text(transaction['transactionID'] ?? '-')),
-                    DataCell(Text(transaction['amount'] ?? '-')),
-                    DataCell(Text(transaction['reference'] ?? '-')),
-                    DataCell(Text(transaction['balance'] ?? '-')),
-                    DataCell(
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 5,
-                          horizontal: 8,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 400,
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search_rounded, size: 20),
+                        hintText: 'Search...',
+                        isDense: true,
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey.shade400),
                         ),
-                        decoration: BoxDecoration(
-                          color: transaction['status'] == 'Success'
-                              ? Colors.green.withOpacity(0.2)
-                              : Colors.red.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(8),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey.shade400),
                         ),
-                        child: Text(
-                          transaction['status'] ?? '-',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: transaction['status'] == 'Success'
-                                ? Colors.green
-                                : Colors.red,
-                          ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.blue, width: 2),
                         ),
                       ),
                     ),
-                  ],
-                );
-              }).toList(),
-              columnSpacing: 95.0,
-              headingRowHeight: 50.0,
-              border: TableBorder.all(),
+                  ),
+                ],
+              ),
             ),
-          ),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: DataTable(
+                  headingRowColor: MaterialStateColor.resolveWith(
+                      (states) => Colors.blueGrey),
+                  headingTextStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  columns: const [
+                    DataColumn(label: Text('Name')),
+                    DataColumn(label: Text('Date Created')),
+                    DataColumn(label: Text('Transaction ID')),
+                    DataColumn(label: Text('Amount')),
+                    DataColumn(label: Text('Reference')),
+                    DataColumn(label: Text('Balance')),
+                    DataColumn(label: Text('Status')),
+                  ],
+                  rows: getPaginatedTransactions().asMap().entries.map((entry) {
+                    final transaction = entry.value;
+                    final index = entry.key;
+                    return DataRow(
+                      color: MaterialStateColor.resolveWith((states) =>
+                          index.isEven ? Colors.grey[100]! : Colors.white),
+                      cells: [
+                        DataCell(Text(transaction['Name'] ?? '-')),
+                        DataCell(Text(transaction['dateCreated'] ?? '-')),
+                        DataCell(Text(transaction['transactionID'] ?? '-')),
+                        DataCell(Text(transaction['amount'] ?? '-')),
+                        DataCell(Text(transaction['reference'] ?? '-')),
+                        DataCell(Text(transaction['balance'] ?? '-')),
+                        DataCell(
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: transaction['status'] == 'Success'
+                                  ? Colors.green.withOpacity(0.2)
+                                  : Colors.red.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              transaction['status'] ?? '-',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: transaction['status'] == 'Success'
+                                    ? Colors.green
+                                    : Colors.red,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }).toList(),
+                  columnSpacing: 80.0,
+                  headingRowHeight: 50.0,
+                  border: TableBorder.all(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: _goToPreviousPage,
-                child: const Text('Previous'),
-              ),
-              Text('Page ${currentPage + 1} of $totalPages'),
-              ElevatedButton(
-                onPressed: _goToNextPage,
-                child: const Text('Next'),
-              ),
-            ],
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: _goToPreviousPage,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text('Previous'),
+                ),
+                Text('Page ${currentPage + 1} of $totalPages',
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                ElevatedButton(
+                  onPressed: _goToNextPage,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text('Next'),
+                ),
+              ],
+            ),
           ),
         ),
       ],
