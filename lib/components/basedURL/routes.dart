@@ -12,7 +12,7 @@ final Map<String, Widget Function()> routes = {
   "/Base_Screen": () => const BaseScreen(),
   "/Dashboard": () => const DashboardPage(),
   "/Transaction": () => const TransactionScreen(),
-  "/Service": () => const serviceScreen(),
+  "/Service": () => const AddServicePage(),
   "/Setting": () => const settingScreen()
 };
 

@@ -374,17 +374,40 @@ class _TransactionScreenState extends State<TransactionScreen> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SizedBox(
-            width: 500.0, // Take the full width of the screen
-            child: TextField(
-              controller: searchController,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search_rounded, size: 18),
-                hintText: 'Search...',
-                isDense: true,
-                border: OutlineInputBorder(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: SizedBox(
+                  width: 500.0,
+                  child: TextField(
+                    controller: searchController,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.search_rounded, size: 18),
+                      hintText: 'Search...',
+                      isDense: true,
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(width: 10),
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Add your download logic here
+                  print('Download button pressed');
+                },
+                icon: const Icon(
+                  Icons.cloud_download_outlined,
+                  color: Colors.red,
+                  size: 15,
+                ),
+                label: const Text(
+                  'Export',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
           ),
         ),
         Expanded(
@@ -444,7 +467,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mercury Web-tool',
       theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+        textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: Colors.black),
         primarySwatch: Colors.blue,
       ),

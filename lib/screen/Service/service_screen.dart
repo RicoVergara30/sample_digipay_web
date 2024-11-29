@@ -1,19 +1,43 @@
 import 'package:flutter/material.dart';
 
-class serviceScreen extends StatefulWidget {
-  const serviceScreen({super.key});
+class AddServicePage extends StatefulWidget {
+  const AddServicePage({super.key});
 
   @override
-  State<serviceScreen> createState() => _sserviceScreenState();
+  State<AddServicePage> createState() => _AddServicePageState();
 }
 
-class _sserviceScreenState extends State<serviceScreen> {
-  bool onHovered = false;
+class _AddServicePageState extends State<AddServicePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Mercury Service',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            letterSpacing: 1.2,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        elevation: 1,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+      ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Card(
+            color: Colors.blue,
+            child: Container(
+              width: 100,
+              height: 100,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -50,9 +50,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [],
+                  const Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Provider : Smart",
+                          style: TextStyle(
+                            color: Color(
+                                0xFF000000), // Equivalent to Colors.grey[100]
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -72,9 +85,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [],
+                  const Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Provider : ATM",
+                          style: TextStyle(
+                            color: Color(
+                                0xFF000000), // Equivalent to Colors.grey[100]
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -94,9 +120,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [],
+                  const Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Provider : Globe",
+                          style: TextStyle(
+                            color: Color(
+                                0xFF000000), // Equivalent to Colors.grey[100]
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -116,9 +155,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [],
+                  const Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Provider : Digi-payt",
+                          style: TextStyle(
+                            color: Color(
+                                0xFF000000), // Equivalent to Colors.grey[100]
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -138,9 +190,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [],
+                  const Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Provider : Bayad Center",
+                          style: TextStyle(
+                            color: Color(
+                                0xFF000000), // Equivalent to Colors.grey[100]
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -160,9 +225,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [],
+                  const Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Provider : Ecypay",
+                          style: TextStyle(
+                            color: Color(
+                                0xFF000000), // Equivalent to Colors.grey[100]
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
