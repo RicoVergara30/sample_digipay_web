@@ -317,9 +317,30 @@ class _TransactionScreenState extends State<TransactionScreen> {
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Transaction History',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            letterSpacing: 1.2,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        elevation: 1,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+      body: isClicked ? _buildNewContent() : _buildInitialGrid(),
+    );
+  }
+
   Widget _buildGridItem(String assetPath, String title) {
     return NeumorphicContainer(
-      height: 200,
+      height: 300,
       width: 200,
       color: isClicked ? Colors.blue : Colors.grey.shade50,
       borderRadius: BorderRadius.circular(20),
@@ -379,30 +400,53 @@ class _TransactionScreenState extends State<TransactionScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 400,
-                    child: TextField(
-                      controller: searchController,
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search_rounded, size: 20),
-                        hintText: 'Search...',
-                        isDense: true,
-                        filled: true,
-                        fillColor: Colors.grey[200],
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.blue, width: 2),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 400,
+                        child: TextField(
+                          controller: searchController,
+                          decoration: InputDecoration(
+                            prefixIcon:
+                                const Icon(Icons.search_rounded, size: 20),
+                            hintText: 'Search...',
+                            isDense: true,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                  color: Colors.blue, width: 2),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      const SizedBox(
+                          width: 10), // Space between search bar and icons
+                      IconButton(
+                        icon: const Icon(Icons.filter_list,
+                            size: 24, color: Colors.grey),
+                        onPressed: () {
+                          // Handle filter action
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.download_rounded,
+                            size: 24, color: Colors.grey),
+                        onPressed: () {
+                          // Handle download action
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -413,10 +457,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: DataTable(
                   headingRowColor: MaterialStateColor.resolveWith(
-                      (states) => Colors.blueGrey),
+                      (states) => Colors.redAccent.shade200),
                   headingTextStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
                   ),
                   columns: const [
                     DataColumn(label: Text('Name')),
@@ -515,27 +558,6 @@ class _TransactionScreenState extends State<TransactionScreen> {
           ),
         ),
       ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Transaction History',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-            letterSpacing: 1.2,
-            fontFamily: 'Roboto',
-          ),
-        ),
-        elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: isClicked ? _buildNewContent() : _buildInitialGrid(),
     );
   }
 }
