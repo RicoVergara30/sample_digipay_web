@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_digipayweb/provider/idleTime.dart';
 import 'package:project_digipayweb/screen/dash_board/base_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
 }
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mercury Web-tool',
-      theme: ThemeData(
-        textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Colors.black),
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => TimerProvider(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Mercury Web-tool',
+        theme: ThemeData(
+          textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
+              .apply(bodyColor: Colors.black),
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        // initialRoute: "/Base_Screen",
+        // routes: routes, // Link the routes map here
+        home: BaseScreen(),
       ),
-      debugShowCheckedModeBanner: false,
-      // initialRoute: "/Base_Screen",
-      // routes: routes, // Link the routes map here
-      home: BaseScreen(),
     );
   }
 }

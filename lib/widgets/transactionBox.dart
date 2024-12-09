@@ -55,6 +55,10 @@ class TransactionContainer extends StatelessWidget {
                 blurRadius: 3 / 2,
                 offset: Offset(-3.0, -3.0)),
           ],
+          // image: const DecorationImage(
+          //   image: AssetImage('assets/FDSAPN.png'),
+          //   fit: BoxFit.contain,
+          // ),
         ),
         child: child,
       ),

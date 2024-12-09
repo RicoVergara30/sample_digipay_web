@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project_digipayweb/widgets/neumorphic.dart';
+import 'package:project_digipayweb/widgets/transactionBox.dart';
+
+import '../../widgets/stepper_circle.dart';
 
 class AddServicePage extends StatefulWidget {
   const AddServicePage({super.key});
@@ -8,248 +12,388 @@ class AddServicePage extends StatefulWidget {
 }
 
 class _AddServicePageState extends State<AddServicePage> {
-  final _formKey = GlobalKey<FormState>();
-  int currentStep = 0; // Tracks the current step
-
-  // Text controllers for form inputs
-  final TextEditingController _serviceNameController = TextEditingController();
-  final TextEditingController _serviceDescriptionController =
-      TextEditingController();
-  final TextEditingController _servicePriceController = TextEditingController();
+  int currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
+    String getStepDescription(int step) {
+      switch (step) {
+        case 0:
+          return 'Choose Network';
+        case 1:
+          return 'Mobile Numbers';
+        case 2:
+          return 'Choose Product';
+        default:
+          return 'Provider';
+      }
+    }
+
+    void _onStepContinue() {
+      setState(() {
+        if (currentStep < 4) {
+          currentStep++;
+        }
+      });
+    }
+
+    void _onStepCancel() {
+      setState(() {
+        if (currentStep > 0) {
+          currentStep--;
+        }
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Service'),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Mercury Service',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            letterSpacing: 1.2,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        elevation: 1,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
       ),
-      body: Row(
-        children: [
-          // Stepper section
-          _buildStepper(),
-          // Main form section
-          Expanded(
-            flex: 3,
-            child: Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: 50,
+          top: 5.0,
+          right: 50,
+        ),
+        child: Row(
+          children: [
+            Container(
+              height: 700,
+              width: 350,
+              color: Colors.grey.shade100,
+              child: TransactionContainer(
+                padding: const EdgeInsets.all(1.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Display content based on the current step
-                    _buildStepContent(),
-                    const SizedBox(height: 20),
-                    // Navigation buttons
-                    _buildNavigationButtons(),
+                    for (int i = 0; i < 3; i++) ...[
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (i < currentStep)
+                            GestureDetector(
+                              onTap: () {
+                                // Navigate back to step 'i'
+                                setState(() {
+                                  currentStep = i;
+                                });
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 10),
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.red,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.check,
+                                    size: 20,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ),
+                            )
+                          else if (i == currentStep)
+                            CircleStepper(
+                              borderColor: Colors.redAccent, // last ly
+                              secondBorderColor: Colors.redAccent, //second ly
+                              stepperColor: Colors.white70, // inner
+                              padding: 10,
+                              shadowColor: Colors.white,
+                              child: Text(
+                                '${i + 1}',
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          else
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.red,
+                                  width: 2,
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '${i + 1}',
+                                  style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)
+                                      .copyWith(
+                                          color: Colors
+                                              .black), // Placeholder text color for inactive steps
+                                ),
+                              ),
+                            ),
+                          const SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'STEP ${i + 1}',
+                                style: currentStep == i
+                                    ? const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors
+                                            .black) // Active step text style
+                                    : const TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.normal)
+                                        .copyWith(
+                                            color: Colors
+                                                .black), // Inactive step text style
+                              ),
+                              Text(
+                                getStepDescription(i),
+                                style: currentStep == i
+                                    ? const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors
+                                            .black) // Active step description style
+                                    : const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold)
+                                        .copyWith(
+                                            color: Colors
+                                                .black), // Inactive step description style
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      if (1 < 4)
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(35, 10, 10, 10),
+                        ),
+                    ],
                   ],
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
 
-  // Builds the stepper on the left
-  Widget _buildStepper() {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        color: Colors.redAccent,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            4,
-            (index) => Column(
-              children: [
-                GestureDetector(
-                  onTap: () => setState(() => currentStep = index),
-                  child: CircleAvatar(
-                    radius: 25,
-                    backgroundColor: index == currentStep
-                        ? Colors.white
-                        : Colors.red.shade300,
-                    child: Text(
-                      '${index + 1}',
-                      style: TextStyle(
-                        color: index == currentStep
-                            ? Colors.redAccent
-                            : Colors.white,
-                        fontWeight: FontWeight.bold,
+            //Button
+            Expanded(
+              flex: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Container(
+                  height: 700,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: SingleChildScrollView(
+                        child: Container(
+                          child: stepContent(currentStep),
+                        ),
+                      )),
+                      const SizedBox(height: 10.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .spaceBetween, // Space between buttons
+                        children: [
+                          // "Previous" Button
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                currentStep > 0 ? _onStepCancel() : null;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  Colors.grey, // Button background color
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 30,
+                                  vertical: 12), // Button padding
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    10), // Rounded corners
+                                side: const BorderSide(
+                                    color: Colors.grey,
+                                    width: 2.0), // Border color and width
+                              ),
+                            ),
+                            child: const Text(
+                              'Previous',
+                              style: TextStyle(
+                                color: Colors.white, // Text color
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(width: 20), // Space between buttons
+
+                          // "Next" Button
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                currentStep < 4 ? _onStepContinue() : null;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  Colors.grey, // Button background color
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 30,
+                                  vertical: 12), // Button padding
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    10), // Rounded corners
+                                side: const BorderSide(
+                                    color: Colors.grey,
+                                    width: 2.0), // Border color and width
+                              ),
+                            ),
+                            child: const Text(
+                              'Next',
+                              style: TextStyle(
+                                color: Colors.white, // Text color
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    ],
                   ),
                 ),
-                if (index < 3)
-                  const SizedBox(
-                    height: 40,
-                    child: VerticalDivider(
-                      color: Colors.white,
-                      thickness: 2,
-                    ),
-                  ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 
-  // Builds the content for the current step
-  Widget _buildStepContent() {
-    switch (currentStep) {
+  // void _showFormDialog(BuildContext context, Map<String, dynamic> server) {
+  //   showDialog(
+  //     context: context,
+  //     barrierDismissible: true,
+  //     builder: (BuildContext context) {
+  //       return FormServerSwitch(
+  //         onFetchServerList: getServerList,
+  //         operation: 1,
+  //         serverItem: server,
+  //       );
+  //     },
+  //   );
+  // }
+
+  Widget stepContent(int step) {
+    switch (step) {
       case 0:
-        return _buildTextFormField(
-          controller: _serviceNameController,
-          label: 'Service Name',
-          icon: Icons.title,
-          hint: 'Enter the service name',
-          validator: (value) =>
-              value!.isEmpty ? 'Service name is required' : null,
-        );
+        return providerContent1();
       case 1:
-        return _buildTextFormField(
-          controller: _serviceDescriptionController,
-          label: 'Service Description',
-          icon: Icons.description,
-          hint: 'Enter a description',
-          maxLines: 3,
-          validator: (value) =>
-              value!.isEmpty ? 'Description is required' : null,
-        );
+        return inputNumber();
       case 2:
-        return _buildTextFormField(
-          controller: _servicePriceController,
-          label: 'Service Price',
-          icon: Icons.attach_money,
-          hint: 'Enter the price',
-          keyboardType: TextInputType.number,
-          validator: (value) {
-            if (value!.isEmpty) return 'Price is required';
-            if (double.tryParse(value) == null) return 'Enter a valid number';
-            return null;
-          },
-        );
-      case 3:
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildReviewItem('Service Name', _serviceNameController.text),
-            _buildReviewItem('Description', _serviceDescriptionController.text),
-            _buildReviewItem('Price', _servicePriceController.text),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _formKey.currentState?.validate() == true
-                  ? _submitForm
-                  : null,
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
-              child: const Text('Submit Service'),
-            ),
-          ],
-        );
+        return providerContent3();
       default:
         return const SizedBox.shrink();
     }
   }
 
-  // Navigation buttons
-  Widget _buildNavigationButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        if (currentStep > 0)
-          OutlinedButton(
-            onPressed: () => setState(() => currentStep -= 1),
-            style: OutlinedButton.styleFrom(foregroundColor: Colors.redAccent),
-            child: const Text('Back'),
-          ),
-        ElevatedButton(
-          onPressed: () {
-            if (currentStep < 3) {
-              setState(() => currentStep += 1);
-            } else if (_formKey.currentState?.validate() == true) {
-              _submitForm();
-            }
-          },
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
-          child: Text(currentStep == 3 ? 'Finish' : 'Next'),
-        ),
-      ],
-    );
-  }
+  Widget providerContent1() {
+    final List<String> providerImages = [
+      'assets/smartLogo.png',
+      'assets/Atmprovider.png',
+      'assets/globeLogo.png',
+      'assets/dgipay.png',
+      'assets/bayadcenter.png',
+    ];
 
-  // Reusable text input field
-  Widget _buildTextFormField({
-    required TextEditingController controller,
-    required String label,
-    required IconData icon,
-    String? hint,
-    int maxLines = 1,
-    TextInputType keyboardType = TextInputType.text,
-    String? Function(String?)? validator,
-  }) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        prefixIcon: Icon(icon),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+    return GridView.builder(
+      shrinkWrap:
+          true, // Makes the grid take up only as much space as its children
+      physics:
+          const NeverScrollableScrollPhysics(), // Prevents scrolling if not needed
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        mainAxisSpacing: 15.0,
+        crossAxisSpacing: 15.0,
+        childAspectRatio: 18 / 7,
       ),
-      maxLines: maxLines,
-      keyboardType: keyboardType,
-      validator: validator,
+      itemCount: providerImages.length, // Number of grid items
+      itemBuilder: (context, index) {
+        return SizedBox(
+          width: 110,
+          height: 100,
+          child: NeumorphicContainer(
+            padding: EdgeInsets.zero,
+            shape: const CircleBorder(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  providerImages[index],
+                  width: 100,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
-  // Review item for step 3
-  Widget _buildReviewItem(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
+  Widget inputNumber() {
+    return const Center(
+      child: Column(
+        mainAxisAlignment:
+            MainAxisAlignment.center, // Centers content vertically
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Centers content horizontally
         children: [
           Text(
-            '$label:',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            'Input Number',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(width: 8),
-          Text(value.isEmpty ? 'Not provided' : value,
-              style: const TextStyle(color: Colors.grey)),
+          SizedBox(height: 16), // Adds spacing between Text and TextField
+          TextField(
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: 'Enter number',
+              border: OutlineInputBorder(),
+              hintText: 'e.g., 123',
+            ),
+          ),
         ],
       ),
     );
   }
 
-  // Handles form submission
-  void _submitForm() {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Service Added'),
-        content: Text(
-          'Service Name: ${_serviceNameController.text}\n'
-          'Description: ${_serviceDescriptionController.text}\n'
-          'Price: ${_servicePriceController.text}',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              setState(() => currentStep = 0); // Reset the stepper
-            },
-            child: const Text('OK'),
-          ),
-        ],
-      ),
+  Widget providerContent3() {
+    return Container(
+      color: Colors.blue.shade100,
+      child: const Text('Provider 3'),
     );
-
-    // Clear the text fields
-    _serviceNameController.clear();
-    _serviceDescriptionController.clear();
-    _servicePriceController.clear();
   }
 }

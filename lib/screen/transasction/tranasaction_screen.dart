@@ -475,7 +475,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                     final index = entry.key;
                     return DataRow(
                       color: MaterialStateColor.resolveWith((states) =>
-                          index.isEven ? Colors.grey[100]! : Colors.white),
+                          index.isEven ? Colors.grey[100]! : Colors.black),
                       cells: [
                         DataCell(Text(transaction['Name'] ?? '-')),
                         DataCell(Text(transaction['dateCreated'] ?? '-')),
@@ -538,7 +538,8 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text('Previous'),
+                  child: const Text('Previous',
+                      style: TextStyle(color: Colors.white)),
                 ),
                 Text('Page ${currentPage + 1} of $totalPages',
                     style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -551,7 +552,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text('Next'),
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
