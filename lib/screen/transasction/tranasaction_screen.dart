@@ -14,6 +14,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
   bool isClicked = false;
   int currentPage = 0;
   final int itemsPerPage = 12;
+  DateTime? selectedDate;
+  DateTime? selectedStartDate;
+  DateTime? selectedEndDate;
 
   // Sample Transactions Data
   final List<Map<String, dynamic>> transactions = [
@@ -265,6 +268,22 @@ class _TransactionScreenState extends State<TransactionScreen> {
     });
   }
 
+  DateTimeRange? selectedDateRange;
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTimeRange? dateTimeRange = await showDateRangePicker(
+      context: context,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(3000),
+    );
+
+    if (dateTimeRange != null) {
+      setState(() {
+        selectedDateRange = dateTimeRange;
+      });
+    }
+  }
+
   final List<Map<String, String>> gridItems = [
     {'asset': 'assets/smartLogo.png', 'title': 'SMART'},
     {'asset': 'assets/Atmprovider.png', 'title': 'ATM'},
@@ -289,6 +308,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
   List<Map<String, dynamic>> getPaginatedTransactions() {
     final startIndex = currentPage * itemsPerPage;
     final endIndex = (startIndex + itemsPerPage).clamp(0, transactions.length);
+
     // return transactions.sublist(startIndex, endIndex);
 
     return filteredTransactions.sublist(
@@ -430,18 +450,15 @@ class _TransactionScreenState extends State<TransactionScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                          width: 10), // Space between search bar and icons
+                      const SizedBox(width: 10),
                       IconButton(
-                        icon: const Icon(Icons.filter_list,
-                            size: 24, color: Colors.grey),
-                        onPressed: () {
-                          // Handle filter action
-                        },
+                        icon: const Icon(Icons.calendar_month_outlined,
+                            size: 15, color: Colors.grey),
+                        onPressed: () => _selectDate(context),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.download_rounded,
-                            size: 24, color: Colors.grey),
+                        icon: const Icon(Icons.download_for_offline_rounded,
+                            size: 20, color: Colors.grey),
                         onPressed: () {
                           // Handle download action
                         },
@@ -457,7 +474,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: DataTable(
                   headingRowColor: MaterialStateColor.resolveWith(
-                      (states) => Colors.redAccent.shade200),
+                      (states) => Colors.redAccent.shade100),
                   headingTextStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -475,7 +492,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                     final index = entry.key;
                     return DataRow(
                       color: MaterialStateColor.resolveWith((states) =>
-                          index.isEven ? Colors.grey[100]! : Colors.black),
+                          index.isEven ? Colors.grey[100]! : Colors.white),
                       cells: [
                         DataCell(Text(transaction['Name'] ?? '-')),
                         DataCell(Text(transaction['dateCreated'] ?? '-')),

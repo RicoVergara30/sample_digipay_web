@@ -24,14 +24,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Mercury Web-tool',
         theme: ThemeData(
-          textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
         // initialRoute: "/Base_Screen",
         // routes: routes, // Link the routes map here
-        home: BaseScreen(),
+        home: const BaseScreen(),
       ),
     );
   }

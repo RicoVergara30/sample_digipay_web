@@ -130,7 +130,6 @@ class _DashboardPageState extends State<DashboardPage> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.7,
-                color: Colors.blue,
                 child: GraphboxContainer(
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
@@ -186,10 +185,10 @@ class ProviderCard extends StatelessWidget {
   final String providerName;
 
   const ProviderCard({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.providerName,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

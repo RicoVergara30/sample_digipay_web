@@ -70,57 +70,16 @@ class TimerProvider extends ChangeNotifier {
     if (_timer != Timer(Duration.zero, () {})) {
       _timer.cancel();
     }
-
     _timer = Timer(
-      const Duration(seconds: 5),
+      const Duration(minutes: 50),
       () async {
-        // Stop the timer when it times out
+        //FUNCTION WHEN THE IDLE TIMER TIMED OUT
+
         stop();
 
-        // Show timeout alert dialog
-        _showTimeoutDialog(context);
-      },
-    );
-  }
-
-  // Function to show the AlertDialog with timeout
-  void _showTimeoutDialog(BuildContext context) {
-    // Set dialog as modal to prevent outside interaction
-    showDialog(
-      context: context,
-      barrierDismissible: false, // Prevent dismissing by tapping outside
-      builder: (BuildContext context) {
-        // Automatically close the dialog after 3 seconds
-        Future.delayed(const Duration(seconds: 3), () {
-          if (Navigator.of(context).canPop()) {
-            Navigator.of(context).pop(); // Dismiss the dialog
-            // Navigate to the TransactionScreen
-            Navigator.of(_buildContext).push(
-              MaterialPageRoute(
-                builder: (_) => const TransactionScreen(),
-              ),
-            );
-          }
-        });
-
-        return AlertDialog(
-          title: const Text('Timeout Alert'),
-          content: const Text('You have been idle for too long.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Dismiss the dialog manually
-                // Navigate to the TransactionScreen immediately
-                Navigator.of(_buildContext).push(
-                  MaterialPageRoute(
-                    builder: (_) => const TransactionScreen(),
-                  ),
-                );
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
+        Navigator.of(buildContext).push(MaterialPageRoute(
+            builder: (_) =>
+                const TransactionScreen())); // Change this to your login screen route
       },
     );
   }
