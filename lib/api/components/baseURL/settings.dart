@@ -16,6 +16,7 @@ Future<DescriptionVendors?> fetchVendorData() async {
     if (response.statusCode == 200) {
       // Decode the JSON response and parse into the DescriptionVendors model
       final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
+      // print(jsonDecode(response.body));
       return DescriptionVendors.fromJson(jsonResponse);
     } else {
       print("Error: HTTP ${response.statusCode}");

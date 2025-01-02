@@ -27,6 +27,7 @@ Future<void> saveChanges(
     "status": status,
   };
 
+  // print('Status $status');
   try {
     // Make the API call
     final http.Response response = await http.post(
@@ -37,6 +38,8 @@ Future<void> saveChanges(
       },
       body: jsonEncode(payload),
     );
+
+    // print(jsonEncode(payload));
 
     // Handle the response
     if (response.statusCode == 200) {
